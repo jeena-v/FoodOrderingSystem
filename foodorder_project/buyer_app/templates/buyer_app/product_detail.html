@@ -1,0 +1,19 @@
+{% extends 'foodorder_app/layout.html' %}
+{% block content %}
+<div class="product-detail-container">
+    <h1>{{ product.name }}</h1>
+
+    {% if product.image %}
+    <img src="{{ product.image.url }}" alt="Image for {{ product.name }}" width="100" height="100" class="product-image">
+
+{% else %}
+    <p>No image uploaded</p>
+{% endif %}
+    
+    <p><strong>Description:</strong> {{ product.description }}</p>
+    <p><strong>Price:</strong> ${{ product.price }}</p>
+    <p><strong>Seller:</strong> {{ product.seller.username }}</p>
+
+    <a href="{% url 'buyer_dashboard' %}" class="back-btn">Back to Dashboard</a>
+</div>
+{% endblock %}

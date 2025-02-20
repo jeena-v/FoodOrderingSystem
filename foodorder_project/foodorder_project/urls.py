@@ -20,5 +20,11 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('foodorder_app.urls')),
-    path('',include('accounts_app.urls')),
+    path('seller/',include('seller_app.urls')),
+    path('buyer/',include('buyer_app.urls')),
 ]
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns +=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

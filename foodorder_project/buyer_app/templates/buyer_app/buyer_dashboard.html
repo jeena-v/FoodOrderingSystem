@@ -11,7 +11,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> Live Dinner Restaurant</strong></h1>
+							<h1 class="m-b-20"><strong>Welcome To <br> BUYER DASHBOARD</strong></h1>
 							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
 							trends to see any changes in performance over time.</p>
 							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
@@ -88,6 +88,16 @@
 		</div>
 	</div>
 	<!-- End QT -->
+	<h1>Welcome, {{ user.username }}! Buyer Dashboard</h1>
+
+	<ul>
+		{% for product in products %}
+		<li>
+		<a href="{% url 'product_detail' product.id %}">
+			{{ product.name }} - {{ product.description }} - ${{ product.price }}   </a>
+		</li>
+		{% endfor %}
+	</ul>
 	
 	<!-- Start Menu -->
 	<div class="menu-box">
