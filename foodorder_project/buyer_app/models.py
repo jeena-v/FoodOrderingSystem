@@ -11,12 +11,15 @@ class CustomUser(AbstractUser):
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
 
+
+
 class CustomUser(AbstractUser):
     USER_TYPES = (
         ('buyer', 'Buyer'),
         ('seller', 'Seller'),
     )
     user_type = models.CharField(max_length=10, choices=USER_TYPES,default='buyer')
+    logo = models.ImageField(upload_to='seller_logos/', blank=True, null=True)  
 
     # Resolve conflicts with default fields
     groups = models.ManyToManyField(
@@ -29,3 +32,4 @@ class CustomUser(AbstractUser):
         related_name="customuser_permissions_set",  # Avoid conflict with auth.User.user_permissions
         blank=True
     )
+

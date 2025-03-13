@@ -2,7 +2,21 @@
 <html lang="en"><!-- Basic -->
 {% extends 'foodorder_app/layout.html' %}
 {% block content %}
+{% block navbar %}
+<div class="collapse navbar-collapse" id="navbars-rs-food">
+	<ul class="navbar-nav ml-auto">
+		
+		<li class="nav-item active"><a class="nav-link" href="{% url 'seller_dashboard' %}">Home</a></li>
+		<li class="nav-item"><a class="nav-link" href="{% url 'seller_menu' %}">Menu</a></li>
+		<li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+		<li class="nav-item"><a class="nav-link" href="{% url 'seller_logout' %}">Logout</a></li>		
+		
+		
+	</ul>
+
 	
+</div>
+{% endblock %}	
 	<!-- Start slides -->
 	<div id="slides" class="cover-slides">
 		<ul class="slides-container">
@@ -11,10 +25,12 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> SELLER DASHBOARD</strong></h1>
+							<h1 class="m-b-20"><strong>Welcome <br> {{ user.username }}! Seller Dashboard</strong></h1>
 							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
 							trends to see any changes in performance over time.</p>
-							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'add_product' %}">Add Products</a></p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'category_create' %}">Add Category</a></p>
+
 						</div>
 					</div>
 				</div>
@@ -24,10 +40,12 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> Live Dinner Restaurant</strong></h1>
+							<h1 class="m-b-20"><strong>Welcome  <br> {{ user.username }}! Seller Dashboard</strong></h1>
 							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
 							trends to see any changes in performance over time.</p>
-							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'add_product' %}">Add Products</a></p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'category_create' %}">Add Category</a></p>
+
 						</div>
 					</div>
 				</div>
@@ -37,10 +55,12 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> Yamifood Restaurant</strong></h1>
+							<h1 class="m-b-20"><strong>Welcome  <br> {{ user.username }}! Seller Dashboard</strong></h1>
 							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
 							trends to see any changes in performance over time.</p>
-							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'add_product' %}">Add Products</a></p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'category_create' %}">Add Category</a></p>
+
 						</div>
 					</div>
 				</div>
@@ -88,16 +108,11 @@
 		</div>
 	</div>
 	<!-- End QT -->
-	<h1>Welcome, {{ user.username }}! Seller Dashboard</h1>
-
-	<ul>
-		{% for product in products %}
-			<li>{{ product.name }} - <a href="{% url 'edit_product' product.pk %}">Edit</a> | <a href="{% url 'delete_product' product.pk %}">Delete</a></li>
-		{% endfor %}
-	</ul>
+	
 	
 	<!-- Start Menu -->
 	<div class="menu-box">
+		
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">

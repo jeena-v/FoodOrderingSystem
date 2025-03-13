@@ -1,0 +1,21 @@
+{% extends 'foodorder_app/layout.html' %}
+{% block content %}
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<h1>Add Category</h1>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add</button>
+</form>
+{% endblock %}

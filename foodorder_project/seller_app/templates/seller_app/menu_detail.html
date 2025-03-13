@@ -1,0 +1,61 @@
+{% extends 'foodorder_app/layout.html' %}
+{% block content %}
+{% block navbar %}
+<div class="collapse navbar-collapse" id="navbars-rs-food">		
+		<ul class="navbar-nav ml-auto">
+		
+			<li class="nav-item active"><a class="nav-link" href="{% url 'seller_dashboard' %}">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="{% url 'seller_menu' %}">Menu</a></li>
+			<li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>			
+			<li class="nav-item"><a class="nav-link" href="{% url 'seller_logout' %}">Logout</a></li>		
+			
+			
+		</ul>	
+</div>
+{% endblock %}
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<h1></h1>
+	<!-- Start blog -->
+	<div class="blog-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>Details of Menu</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-12">
+					<div class="blog-box-inner">
+						<div class="blog-img-box">
+							{% if product.image %}
+							<img class="img-fluid" src="{{ product.image.url }}" alt="Image for {{ product.name }}" width="400" height="0">
+							{% else %}
+  						    <p>No image uploaded</p>
+							{% endif %}
+						</div>
+						
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-12">
+					<div class="blog-box-inner">
+						
+						<div class="blog-detail">
+							<h1>{{ product.name }}</h1>
+							<p><strong>Description:</strong> {{ product.description }}</p>
+    						<p><strong>Price:</strong> ${{ product.price }}</p>
+   						    <p><strong>Seller:</strong> {{ product.seller.username }}</p>
+							<a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'edit_product' product.id %}">Edit</a>
+							<a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'delete_product' product.id %}">Delete</a>
+						</div>
+					</div>
+				</div>
+								
+			</div>
+		</div>
+	</div>
+	<!-- End blog -->
+{% endblock %}
